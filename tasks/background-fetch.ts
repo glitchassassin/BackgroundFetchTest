@@ -12,4 +12,6 @@ TaskManager.defineTask(BACKGROUND_SYNC_TASK, async () => {
 
 BackgroundFetch.registerTaskAsync(BACKGROUND_SYNC_TASK, {
   minimumInterval: 60, // 1 minute
+  startOnBoot: true,
+  stopOnTerminate: false,
 });
