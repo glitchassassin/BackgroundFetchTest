@@ -1,0 +1,42 @@
+{
+  "cli": {
+    "version": ">= 13.1.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "prod": {
+      "distribution": "internal",
+      "channel": "prod",
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "qa": {
+      "extends": "prod",
+      "channel": "qa"
+    },
+    "uat": {
+      "extends": "prod",
+      "channel": "uat"
+    },
+    "dev": {
+      "extends": "prod",
+      "developmentClient": true,
+      "channel": "dev"
+    },
+    "test": {
+      "android": {
+        "gradleCommand": ":app:assembleRelease :app:assembleAndroidTest -DtestBuildType=release",
+        "withoutCredentials": true
+      },
+      "channel": "test"
+    },
+    "e2e": {
+      "extends": "prod",
+      "channel": "e2e"
+    }
+  },
+  "submit": {
+    "production": {}
+  }  
+}
